@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>App</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/viewer.css">
+</head>
+<body>
+ 
+    <div id="screen-connecting" class="screen-connecting">
+        <div class="connect-wrap">
+            <span class="loader"></span>
+            <a>Connecting</a>
+        </div>
+    </div>
+
+    <div id="screen-preview" class="screen-preview">
+        <div class="preview-div">
+            <span class="loader" id="video-loader"></span>
+
+            <video id="preview" autoplay style="display: none;"></video>
+
+            <div id="prev-error" class="preview-error-div" style="display: none;">
+                <img src="../img/error-icon.png">
+                <a>It looks like we had a problem!</a>
+                <a id="prev-errormsg"></a>
+            </div>
+
+        </div>
+        <div class="letter-display" id="letter-display">
+            <a id="output-text">L</a>
+        </div>
+    </div>
+    
+</body>
+
+<script src="../js/viewer-core.js"></script>
+
+</html>
