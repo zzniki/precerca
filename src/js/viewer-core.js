@@ -10,7 +10,11 @@ var preview = document.getElementById("preview");
 var cameraStream = null;
 var mediaRecorder = null;
 
-var socket = new WebSocket("wss://0.tcp.ngrok.io:15325/detect");
+var address = "wss://0.tcp.ngrok.io:15325/detect";
+
+if (document.location.href.includes("localhost")) address = "ws://localhost:5000/detect";
+
+var socket = new WebSocket(address);
 
 var loadingScreen = document.getElementById("screen-connecting");
 var viewScreen = document.getElementById("screen-preview");
