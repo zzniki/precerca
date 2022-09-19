@@ -1,7 +1,7 @@
 require("@tensorflow/tfjs-core");
 require("@tensorflow/tfjs-converter");
 
-require("@tensorflow/tfjs-backend-webgl");
+require("@tensorflow/tfjs-backend-wasm");
 
 const handpose = require("@tensorflow-models/handpose");
 
@@ -10,7 +10,7 @@ var preview = document.getElementById("preview");
 var cameraStream = null;
 var mediaRecorder = null;
 
-var socket = new WebSocket("ws://2.tcp.ngrok.io:13825/detect");
+var socket = new WebSocket("ws://0.tcp.ngrok.io:15325/detect");
 
 var loadingScreen = document.getElementById("screen-connecting");
 var viewScreen = document.getElementById("screen-preview");

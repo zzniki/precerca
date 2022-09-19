@@ -22,6 +22,7 @@
   "homepage": "https://github.com/iByNiki/pr-frontend#readme",
   "dependencies": {
     "@tensorflow-models/handpose": "0.0.7",
+    "@tensorflow/tfjs-backend-wasm": "^3.20.0",
     "@tensorflow/tfjs-backend-webgl": "^3.20.0",
     "handpose": "^0.1.0",
     "webpack": "^5.74.0",
