@@ -44,7 +44,8 @@ async function init() {
     } catch (e) {
         console.log(e);
         hideVideoLoader();
-        showPreviewError("Couldn't access camera");
+        showPreviewError(e);
+        //showPreviewError("Couldn't access camera");
         return;
     }
 
