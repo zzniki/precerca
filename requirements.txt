@@ -1,5 +1,0 @@
-Flask==1.1.4
-flask_threaded_sockets==0.3.2
-mediapipe==0.8.9.1
-numpy==1.21.1
-opencv_python==4.5.5.62
