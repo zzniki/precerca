@@ -1,5 +1,9 @@
-const handpose = require("@tensorflow-models/handpose");
+require("@tensorflow/tfjs-core");
+require("@tensorflow/tfjs-converter");
+
 require("@tensorflow/tfjs-backend-webgl");
+
+const handpose = require("@tensorflow-models/handpose");
 
 var preview = document.getElementById("preview");
 

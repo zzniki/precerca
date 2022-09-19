@@ -1,5 +1,7 @@
 const PORT = 8000;
 
+console.log("ab");
+
 var http = require("http");
 var fs = require("fs");
 
