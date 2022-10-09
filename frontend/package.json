@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "run": "npx http-server src -p $PORT",
+    "run": "npx http-server src -p 80",
     "build": "webpack --progress --profile --mode production",
     "start": "npm run-script build && npm run-script run",
     "start-dev": "npm run-script build && npx http-server src -p 80"
