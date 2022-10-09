@@ -1,5 +1,7 @@
-Flask
-flask_threaded_sockets
+flask_threaded_sockets==0.3.2
+Flask==1.1.4
+Werkzeug==1.0.1
+markupsafe==2.0.1
 mediapipe
 numpy
 opencv_python

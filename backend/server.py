@@ -13,8 +13,8 @@ import sys
 
 IP = "0.0.0.0"
 
-if (len(sys.argv) >= 1):
-    PORT = sys.argv[0]
+if (len(sys.argv) >= 2):
+    PORT = sys.argv[1]
 else:
     PORT = 5000
 
