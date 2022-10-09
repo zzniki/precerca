@@ -10,7 +10,7 @@ var preview = document.getElementById("preview");
 var cameraStream = null;
 var mediaRecorder = null;
 
-var address = "wss://0.tcp.ngrok.io:15325/detect";
+var address = "ws://194.62.1.154:5000/detect";
 
 if (document.location.href.includes("localhost")) address = "ws://localhost:5000/detect";
 
