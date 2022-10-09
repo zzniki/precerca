@@ -1,7 +1,6 @@
 from concurrent.futures import process
 from sys import flags
 from threading import Thread
-from tkinter import Frame
 from flask import Flask
 from flask_threaded_sockets import Sockets, ThreadedWebsocketServer
 import handtracker
