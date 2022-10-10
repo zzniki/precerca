@@ -40,6 +40,8 @@ async function loop(model) {
 
     }
 
+    addOutputText(Math.floor(Math.random() * 9).toString());
+
 }
 
 async function init() {
