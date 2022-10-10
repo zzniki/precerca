@@ -51,6 +51,7 @@ async function loop(model) {
 
         output = output.slice(0, -1);
 
+        
         console.log(output);
         socket.send(output);
 
