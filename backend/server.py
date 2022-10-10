@@ -11,8 +11,6 @@ import base64
 import threading
 import sys
 
-from macpath import split
-
 IP = "0.0.0.0"
 
 if (len(sys.argv) >= 2):
