@@ -16,7 +16,7 @@ IP = "0.0.0.0"
 if (len(sys.argv) >= 2):
     PORT = sys.argv[1]
 else:
-    PORT = 2052
+    PORT = 2053
 
 app = Flask(__name__)
 sockets = Sockets(app)
