@@ -11,6 +11,8 @@ import base64
 import threading
 import sys
 
+from macpath import split
+
 IP = "0.0.0.0"
 
 if (len(sys.argv) >= 2):
@@ -37,6 +39,10 @@ def processFrameInThread(data, ws):
 
 def processFrame(frameData, ws):
     splitData = frameData.split(",")
+
+    for i, elem in enumerate(splitData):
+        splitData[i] = float(elem)
+
     scrapedData = [splitData[i:i + 3] for i in range(0, len(splitData), 3)] # Split data into chunks of 3
 
     print(scrapedData)
