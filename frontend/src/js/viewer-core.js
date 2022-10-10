@@ -57,7 +57,7 @@ async function init() {
 
     console.log("Starting...");
 
-    await tf.setBackend("wasm");
+    //await tf.setBackend("wasm");
 
     console.log("Loaded backend...");
     const model = await handpose.load();
