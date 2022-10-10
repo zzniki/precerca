@@ -29,7 +29,7 @@ var displayWidth = letterDisplay.scrollWidth;
 
 async function loop(model) {
 
-    console.log("Loop");
+    console.log("Loop2");
 
     const predictions = await model.estimateHands(preview);
 
