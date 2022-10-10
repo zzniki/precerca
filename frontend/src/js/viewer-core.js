@@ -1,7 +1,7 @@
 const tf = require("@tensorflow/tfjs-core");
 require("@tensorflow/tfjs-converter");
 
-require("@tensorflow/tfjs-backend-wasm");
+require("@tensorflow/tfjs-backend-webgl");
 
 const handpose = require("@tensorflow-models/handpose");
 
@@ -29,7 +29,7 @@ var displayWidth = letterDisplay.scrollWidth;
 
 async function loop(model) {
 
-    console.log("Loop2");
+    console.log("Loop3");
 
     const predictions = await model.estimateHands(preview);
 
@@ -59,7 +59,7 @@ async function init() {
 
     console.log("Starting...");
 
-    await tf.setBackend("wasm");
+    await tf.setBackend("webgl");
 
     console.log("Loaded backend...");
     const model = await handpose.load();
