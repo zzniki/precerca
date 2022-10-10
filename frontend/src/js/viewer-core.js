@@ -10,7 +10,7 @@ var preview = document.getElementById("preview");
 var cameraStream = null;
 var mediaRecorder = null;
 
-var address = "wss://pr.niki.cat:8080/detect";
+var address = "wss://pr.niki.cat:8443/detect";
 
 if (document.location.href.includes("localhost")) address = "ws://localhost:5000/detect";
 
