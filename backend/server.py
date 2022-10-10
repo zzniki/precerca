@@ -40,9 +40,11 @@ def processFrame(frameData, ws):
     scrapedData = [splitData[i:i + 3] for i in range(0, len(splitData), 3)] # Split data into chunks of 3
 
     print(scrapedData)
+    print("predicting")
 
     label, perc = handtracker.predictData(scrapedData)
 
+    print("predicted")
     print(label)
     
 
