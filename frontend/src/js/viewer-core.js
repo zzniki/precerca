@@ -35,8 +35,24 @@ async function loop(model) {
 
     if (predictions.length > 0) {
 
-        console.log(predictions[0].landmarks);
-        socket.send(predictions[0].landmarks);
+        //console.log(predictions[0].landmarks);
+
+        var output = "";
+
+        predictions[0].landmarks.forEach((landmark) => {
+
+            landmark.forEach((point) => {
+
+                output += point.toString() + ",";
+
+            });
+
+        });
+
+        output = output.slice(0, -1);
+
+        console.log(output);
+        socket.send(output);
 
     }
 
