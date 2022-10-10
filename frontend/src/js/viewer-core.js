@@ -55,6 +55,9 @@ async function loop(model) {
         console.log(output);
         socket.send(output);
 
+        // the issue: coordinates on the database range from 0 to 1, meanwhile the coordinates
+        // from the cam are based on the camera picture size
+
     }
 
     addOutputText(Math.floor(Math.random() * 9).toString());
