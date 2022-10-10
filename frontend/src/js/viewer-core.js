@@ -1,4 +1,4 @@
-require("@tensorflow/tfjs-core");
+const tf = require("@tensorflow/tfjs-core");
 require("@tensorflow/tfjs-converter");
 
 require("@tensorflow/tfjs-backend-wasm");
@@ -29,6 +29,8 @@ var displayWidth = letterDisplay.scrollWidth;
 
 async function loop(model) {
 
+    console.log("Loop");
+
     const predictions = await model.estimateHands(preview);
 
     if (predictions.length > 0) {
@@ -55,6 +57,9 @@ async function init() {
 
     console.log("Starting...");
 
+    await tf.setBackend("wasm");
+
+    console.log("Loaded backend...");
     const model = await handpose.load();
 
     setInterval(loop, 1000 / 30, model);
