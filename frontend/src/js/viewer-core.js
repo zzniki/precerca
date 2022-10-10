@@ -36,7 +36,7 @@ async function loop(model) {
     if (predictions.length > 0) {
 
         console.log(predictions[0].landmarks);
-        socket.send(predictions[0].landmarks);
+        //socket.send(predictions[0].landmarks);
 
     }
 
@@ -66,6 +66,7 @@ async function init() {
 
     console.log("Started!");
     hideVideoLoader();
+    showPreviewVideo();
 
 }
 
@@ -94,6 +95,12 @@ function showPreviewError(text) {
 function hideVideoLoader() {
 
     videoLoder.style.display = "none";
+
+}
+
+function showPreviewVideo() {
+
+    preview.style.display = "block";
 
 }
 
