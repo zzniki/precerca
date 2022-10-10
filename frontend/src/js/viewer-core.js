@@ -36,7 +36,7 @@ async function loop(model) {
     if (predictions.length > 0) {
 
         console.log(predictions[0].landmarks);
-        //socket.send(predictions[0].landmarks);
+        socket.send(predictions[0].landmarks);
 
     }
 
