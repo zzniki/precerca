@@ -44,5 +44,5 @@ def processFrame(frameData, ws):
     print(label)
     
 
-srv = ThreadedWebsocketServer(IP, PORT, app)
+srv = ThreadedWebsocketServer(IP, PORT, app, ssl_context="adhoc")
 srv.serve_forever()
