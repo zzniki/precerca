@@ -1,7 +1,7 @@
 const tf = require("@tensorflow/tfjs-core");
 require("@tensorflow/tfjs-converter");
 
-require("@tensorflow/tfjs-backend-wasm");
+require("@tensorflow/tfjs-backend-webgl");
 
 const handpose = require("@tensorflow-models/handpose");
 
@@ -59,7 +59,7 @@ async function init() {
 
     console.log("Starting...");
 
-    await tf.setBackend("wasm");
+    await tf.setBackend("webgl");
 
     console.log("Loaded backend...");
     const model = await handpose.load();
