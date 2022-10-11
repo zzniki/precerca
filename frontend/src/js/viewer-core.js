@@ -8,7 +8,7 @@ const handpose = require("@tensorflow-models/handpose");*/
 require("@mediapipe/camera_utils");
 require("@mediapipe/control_utils");
 require("@mediapipe/drawing_utils");
-require("@mediapipe/hands");
+const handpose = require("@mediapipe/hands");
 
 var preview = document.getElementById("preview");
 
@@ -91,7 +91,7 @@ async function init() {
 
     console.log("Starting...");
 
-    const hands = new Hands();
+    const hands = new handpose();
     hands.onResults(onResults);
 
     //await tf.setBackend("wasm");
