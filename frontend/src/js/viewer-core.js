@@ -69,6 +69,7 @@ async function loop(model) {
 
 }
 
+
 function onResults() {
 
     console.log(results.multiHandLandmarks);
