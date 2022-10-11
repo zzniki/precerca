@@ -108,7 +108,7 @@ async function init() {
 
     }
 
-    detector = await handPoseDetection.createDetector(model, detectorConfig);
+    const detector = await handPoseDetection.createDetector(model, detectorConfig);
 
     console.log("Started...")
 
