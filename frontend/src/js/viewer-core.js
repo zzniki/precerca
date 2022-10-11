@@ -5,10 +5,11 @@ require("@tensorflow/tfjs-backend-wasm");
 
 const handpose = require("@tensorflow-models/handpose");*/
 
-require("@mediapipe/camera_utils");
-require("@mediapipe/control_utils");
-require("@mediapipe/drawing_utils");
-const handpose = require("@mediapipe/hands");
+import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
+import '@tensorflow/tfjs-core';
+// Register WebGL backend.
+import '@tensorflow/tfjs-backend-webgl';
+import '@mediapipe/hands';
 
 var preview = document.getElementById("preview");
 
@@ -32,11 +33,19 @@ var letterDisplay = document.getElementById("letter-display");
 var outputElem = document.getElementById("output-text");
 var displayWidth = letterDisplay.scrollWidth;
 
-async function loop(model) {
+async function loop(detector) {
 
-    console.log("Loop4");
+    console.log("Loop1");
 
-    const predictions = await model.estimateHands(preview);
+    const predictions = await detector.estimateHands(image, estimationCoinfig);
+
+    if (predictions.length > 0) {
+
+        console.log(predictions);
+
+    }
+
+    /*const predictions = await model.estimateHands(preview);
 
     if (predictions.length > 0) {
 
@@ -63,7 +72,7 @@ async function loop(model) {
         // the issue: coordinates on the database range from 0 to 1, meanwhile the coordinates
         // from the cam are based on the camera picture size
 
-    }
+    }*/
 
     addOutputText(Math.floor(Math.random() * 9).toString());
 
@@ -91,26 +100,27 @@ async function init() {
 
     console.log("Starting...");
 
-    const hands = new handpose();
+    const model = handPoseDetection.SupportedModels.MediaPipeHands;
+    const detectorConfig = {
+
+        runtime: "mediapipe",
+        solutionPath: "https://cdn.jsdelivr.net/npm/@mediapipe/hands"
+
+    }
+
+    detector = await handPoseDetection.createDetector(model, detectorConfig);
+
+    console.log("Started...")
+
     hands.onResults(onResults);
 
     //await tf.setBackend("wasm");
 
     console.log("Loaded backend...");
 
-    const camera = new Camera(preview, {
-
-        onFrame: async () => {
-            await hands.send({image: preview});
-        }
-
-    });
-
-    camera.start();
-
     //const model = await handpose.load();
 
-    //setInterval(loop, 1000 / 30, model);
+    setInterval(loop, 1000 / 30, detector);
 
     console.log("Started!");
     hideVideoLoader();
