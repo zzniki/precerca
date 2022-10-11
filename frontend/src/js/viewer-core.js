@@ -8,7 +8,7 @@ const handpose = require("@tensorflow-models/handpose");*/
 import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
 import '@tensorflow/tfjs-core';
 // Register WebGL backend.
-import '@tensorflow/tfjs-backend-webgl';
+import '@tensorflow/tfjs-backend-wasm';
 import '@mediapipe/hands';
 
 var preview = document.getElementById("preview");
