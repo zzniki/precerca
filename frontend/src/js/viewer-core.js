@@ -36,6 +36,7 @@ var displayWidth = letterDisplay.scrollWidth;
 async function loop(detector) {
 
     console.log("Loop1");
+    
 
     const predictions = await detector.estimateHands(preview, {flipHorizontal: false});
 
