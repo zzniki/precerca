@@ -112,7 +112,7 @@ async function init() {
 
     console.log("Started...")
 
-    hands.onResults(onResults);
+    //hands.onResults(onResults);
 
     //await tf.setBackend("wasm");
 
