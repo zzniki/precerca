@@ -1,9 +1,14 @@
-const tf = require("@tensorflow/tfjs-core");
+/*const tf = require("@tensorflow/tfjs-core");
 require("@tensorflow/tfjs-converter");
 
 require("@tensorflow/tfjs-backend-wasm");
 
-const handpose = require("@tensorflow-models/handpose");
+const handpose = require("@tensorflow-models/handpose");*/
+
+require("@mediapipe/camera_utils");
+require("@mediapipe/control_utils");
+require("@mediapipe/drawing_utils");
+const handpose = require("@mediapipe/hands");
 
 var preview = document.getElementById("preview");
 
@@ -29,7 +34,7 @@ var displayWidth = letterDisplay.scrollWidth;
 
 async function loop(model) {
 
-    console.log("Loop3");
+    console.log("Loop4");
 
     const predictions = await model.estimateHands(preview);
 
@@ -64,6 +69,13 @@ async function loop(model) {
 
 }
 
+
+function onResults() {
+
+    console.log(results.multiHandLandmarks);
+
+}
+
 async function init() {
 
     try {
@@ -79,12 +91,26 @@ async function init() {
 
     console.log("Starting...");
 
-    await tf.setBackend("wasm");
+    const hands = new Hands();
+    hands.onResults(onResults);
+
+    //await tf.setBackend("wasm");
 
     console.log("Loaded backend...");
-    const model = await handpose.load();
 
-    setInterval(loop, 1000 / 30, model);
+    const camera = new Camera(preview, {
+
+        onFrame: async () => {
+            await hands.send({image: preview});
+        }
+
+    });
+
+    camera.start();
+
+    //const model = await handpose.load();
+
+    //setInterval(loop, 1000 / 30, model);
 
     console.log("Started!");
     hideVideoLoader();
