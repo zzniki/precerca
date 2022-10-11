@@ -8,7 +8,7 @@ const handpose = require("@tensorflow-models/handpose");*/
 require("@mediapipe/camera_utils");
 require("@mediapipe/control_utils");
 require("@mediapipe/drawing_utils");
-const handpose = require("@mediapipe/hands");
+require("@mediapipe/hands");
 
 var preview = document.getElementById("preview");
 
