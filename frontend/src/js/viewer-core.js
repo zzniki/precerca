@@ -37,7 +37,7 @@ async function loop(detector) {
 
     console.log("Loop1");
 
-    const predictions = await detector.estimateHands(preview, estimationCoinfig);
+    const predictions = await detector.estimateHands(preview, {flipHorizontal: false});
 
     if (predictions.length > 0) {
 
