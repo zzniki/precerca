@@ -10,15 +10,23 @@ import numpy as np
 import base64
 import threading
 import sys
+import os
 
 IP = "0.0.0.0"
 PORT = 8443
 
 RECORD = False
+TARGETFRAMES = 100
+
+recordOutput = ""
+recordedFrames = 0
 
 if (len(sys.argv) >= 2):
     if (sys.argv[1].lower() == "rec"):
+        print("[INFO] Starting in recording mode")
+
         RECORD = True
+        TARGETFRAMES = sys.argv[2]
 
 app = Flask(__name__)
 sockets = Sockets(app)
@@ -38,12 +46,36 @@ def processFrameInThread(data, ws):
     t.start()
 
 def processFrame(frameData, ws):
+
+    global recordedFrames, output
+
     splitData = frameData.split(",")
 
     for i, elem in enumerate(splitData):
         splitData[i] = float(elem)
 
     scrapedData = [splitData[i:i + 3] for i in range(0, len(splitData), 3)] # Split data into chunks of 3
+
+    if (RECORD):
+        for landmark in scrapedData:
+            for point in landmark:
+                output += str(point) + " "
+
+        recordedFrames += 1
+
+        if (recordedFrames >= TARGETFRAMES):
+
+            print("[INFO] Saving recording...")
+
+            output = output[:-1]
+
+            f = open("dataset/recorded.hand", "w+")
+            f.write(output)
+            f.close()
+
+            print("[INFO] Saved!")
+
+            os._exit(1)
 
     print(scrapedData)
     print("predicting")
