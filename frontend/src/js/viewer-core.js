@@ -68,10 +68,10 @@ function getLimits(keyPoints) {
 
 function normalize(value, min, max) {
 
-    var result = (value - min) / (max - min);
+    var result = 0.1 + (value - min) / (max - min);
 
     if (result != NaN) return result;
-    else return 0.0;
+    else return 0.1;
 
 }
 
