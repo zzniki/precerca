@@ -26,7 +26,7 @@ if (len(sys.argv) >= 2):
         print("[INFO] Starting in recording mode")
 
         RECORD = True
-        TARGETFRAMES = sys.argv[2]
+        TARGETFRAMES = int(sys.argv[2])
 
 app = Flask(__name__)
 sockets = Sockets(app)
