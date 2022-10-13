@@ -35,12 +35,12 @@ var displayWidth = letterDisplay.scrollWidth;
 
 function getLimits(keyPoints) {
 
-    let minX = -1000;
-    let maxX = 1000;
-    let minY = -1000;
-    let maxY = 1000;
-    let minZ = -1000;
-    let maxZ = 1000;
+    let minX = 1000;
+    let maxX = -1000;
+    let minY = 1000;
+    let maxY = -1000;
+    let minZ = 1000;
+    let maxZ = -1000;
 
     keyPoints.forEach((points) => {
 
