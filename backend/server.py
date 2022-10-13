@@ -47,7 +47,7 @@ def processFrameInThread(data, ws):
 
 def processFrame(frameData, ws):
 
-    global recordedFrames, output
+    global recordedFrames, recordOutput
 
     splitData = frameData.split(",")
 
