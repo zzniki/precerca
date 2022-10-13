@@ -33,16 +33,88 @@ var letterDisplay = document.getElementById("letter-display");
 var outputElem = document.getElementById("output-text");
 var displayWidth = letterDisplay.scrollWidth;
 
+function getLimits(keyPoints) {
+
+    var minX = -1000;
+    var maxX = 1000;
+    var minY = -1000;
+    var maxY = 1000;
+    var minZ = -1000;
+    var maxZ = 1000;
+
+    keyPoints.forEach((points) => {
+
+        if (points[0] < minX) minX = points[0];
+        if (points[0] > maxX) maxX = points[0];
+
+        if (points[1] < minY) minY = points[1];
+        if (points[1] > maxY) maxY = points[1];
+
+        if (points[2] < minY) minY = points[2];
+        if (points[2] > maxY) maxY = points[2];
+
+    });
+
+    return {
+        minX: minX,
+        maxX: maxX,
+        minY: minY,
+        maxY: maxY,
+        minZ: minZ,
+        maxZ: maxZ
+    };
+
+}
+
+function normalize(value, min, max) {
+
+    return (value - min) / max;
+
+}
+
+function normalizeV3(vector, limits) {
+
+    return [normalize(vector[0], limits.minX, limits.maxX), 
+    normalize(vector[1], limits.minY, limits.maxY), 
+    normalize(vector[2], limits.minZ, limits.maxZ)];
+
+}
+
+function normalizeKeypoints(keypoints, limits) {
+
+    var output = [];
+
+    keypoints.forEach((keypoint) => {
+
+        output.push(normalizeV3(keypoint, limits));
+
+    });
+
+    return output;
+
+}
+
 async function loop(detector) {
 
-    console.log("Loop1");
+    console.log("Loop2");
 
 
     const predictions = await detector.estimateHands(preview, {flipHorizontal: false});
 
     if (predictions.length > 0) {
 
-        console.log(predictions[0].keypoints3D[0]);
+        const keypoints3D = predictions[0].keypoints3D;
+        const limits = getLimits(keypoints3D);
+        const normalizedPoints = normalizeKeypoints(keypoints3D, limits);
+
+        console.log("keypoints");
+        console.log(keypoints3D);
+        console.log("limits");
+        console.log(limits);
+        console.log("normalized");
+        console.log(normalizedPoints);
+        console.log("first");
+        console.log(normalizedPoints[0]);
 
     }
 
