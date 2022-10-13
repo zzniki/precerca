@@ -12,11 +12,13 @@ import threading
 import sys
 
 IP = "0.0.0.0"
+PORT = 8443
+
+RECORD = False
 
 if (len(sys.argv) >= 2):
-    PORT = sys.argv[1]
-else:
-    PORT = 8443
+    if (sys.argv[1].lower() == "rec"):
+        RECORD = True
 
 app = Flask(__name__)
 sockets = Sockets(app)
