@@ -35,12 +35,12 @@ var displayWidth = letterDisplay.scrollWidth;
 
 function getLimits(keyPoints) {
 
-    let minX = 1000;
-    let maxX = -1000;
-    let minY = 1000;
-    let maxY = -1000;
-    let minZ = 1000;
-    let maxZ = -1000;
+    var minX = 1000;
+    var maxX = -1000;
+    var minY = 1000;
+    var maxY = -1000;
+    var minZ = 1000;
+    var maxZ = -1000;
 
     keyPoints.forEach((points) => {
 
@@ -50,8 +50,8 @@ function getLimits(keyPoints) {
         if (points.y < minY) minY = points.y;
         if (points.y > maxY) maxY = points.y;
 
-        if (points.z < minY) minY = points.z;
-        if (points.z > maxY) maxY = points.z;
+        if (points.z < minZ) minZ = points.z;
+        if (points.z > maxZ) maxZ = points.z;
 
     });
 
@@ -68,7 +68,7 @@ function getLimits(keyPoints) {
 
 function normalize(value, min, max) {
 
-    return (value - min) / max;
+    return (value - min) / (max - min);
 
 }
 
