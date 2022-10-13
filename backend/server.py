@@ -59,7 +59,7 @@ def processFrame(frameData, ws):
     if (RECORD):
         for landmark in scrapedData:
             for point in landmark:
-                output += str(point) + " "
+                recordOutput += str(point) + " "
 
         recordedFrames += 1
 
@@ -67,10 +67,10 @@ def processFrame(frameData, ws):
 
             print("[INFO] Saving recording...")
 
-            output = output[:-1]
+            recordOutput = recordOutput[:-1]
 
             f = open("dataset/recorded.hand", "w+")
-            f.write(output)
+            f.write(recordOutput)
             f.close()
 
             print("[INFO] Saved!")
