@@ -27,7 +27,7 @@ def loadDataset(dir):
 
     for (dirpath, dirnames, filenames) in os.walk(dir):
         for i, filename in enumerate(filenames):
-            if (filename.endswith(".txt")):
+            if (filename.endswith(".hand")):
                 f = open(os.path.join(dirpath, filename), "r")
                 data = f.read().split("\n")
                 f.close()
@@ -41,7 +41,7 @@ def loadDataset(dir):
 
                     dataset[i]["data"].append([float(z) for z in dataPoint.split(" ")]) # convert to float
 
-                dataset[i]["label"] = filename.replace(".txt", "")
+                dataset[i]["label"] = filename.replace(".hand", "")
 
     return dataset
 
