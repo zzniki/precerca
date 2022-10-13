@@ -80,7 +80,8 @@ def processFrame(frameData, ws):
     print(scrapedData)
     print("predicting")
 
-    label, perc = handtracker.predictData([scrapedData])
+    if (not RECORD):
+        label, perc = handtracker.predictData([scrapedData])
 
     print("predicted")
     print(label)
