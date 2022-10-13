@@ -85,6 +85,5 @@ def processFrame(frameData, ws):
     print("predicted")
     print(label)
     
-
 srv = ThreadedWebsocketServer(IP, PORT, app, ssl_context="adhoc")
 srv.serve_forever()
