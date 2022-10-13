@@ -104,7 +104,7 @@ async function loop(detector) {
     if (predictions.length > 0) {
 
         const keypoints3D = predictions[0].keypoints3D;
-        const limits = getLimits(keypoints3D);
+        /*const limits = getLimits(keypoints3D);
         const normalizedPoints = normalizeKeypoints(keypoints3D, limits);
 
         console.log("keypoints");
@@ -114,7 +114,9 @@ async function loop(detector) {
         console.log("normalized");
         console.log(normalizedPoints);
         console.log("first");
-        console.log(normalizedPoints[0]);
+        console.log(normalizedPoints[0]);*/
+
+        console.log(keypoints3D[0]);
 
     }
 
