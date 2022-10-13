@@ -60,6 +60,8 @@ def processFrame(frameData, ws):
         for landmark in scrapedData:
             for point in landmark:
                 recordOutput += str(point) + " "
+            
+        recordOutput = recordOutput[:-1] + "\n"
 
         recordedFrames += 1
 
