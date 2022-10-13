@@ -44,14 +44,14 @@ function getLimits(keyPoints) {
 
     keyPoints.forEach((points) => {
 
-        if (points[0] < minX) minX = points[0];
-        if (points[0] > maxX) maxX = points[0];
+        if (points.x < minX) minX = points.x;
+        if (points.x > maxX) maxX = points.x;
 
-        if (points[1] < minY) minY = points[1];
-        if (points[1] > maxY) maxY = points[1];
+        if (points.y < minY) minY = points.y;
+        if (points.y > maxY) maxY = points.y;
 
-        if (points[2] < minY) minY = points[2];
-        if (points[2] > maxY) maxY = points[2];
+        if (points.z < minY) minY = points.z;
+        if (points.z > maxY) maxY = points.z;
 
     });
 
@@ -74,9 +74,9 @@ function normalize(value, min, max) {
 
 function normalizeV3(vector, limits) {
 
-    return [normalize(vector[0], limits.minX, limits.maxX), 
-    normalize(vector[1], limits.minY, limits.maxY), 
-    normalize(vector[2], limits.minZ, limits.maxZ)];
+    return [normalize(vector.x, limits.minX, limits.maxX), 
+    normalize(vector.y, limits.minY, limits.maxY), 
+    normalize(vector.z, limits.minZ, limits.maxZ)];
 
 }
 
