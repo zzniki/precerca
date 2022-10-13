@@ -3,7 +3,7 @@ from sys import flags
 from threading import Thread
 from flask import Flask
 from flask_threaded_sockets import Sockets, ThreadedWebsocketServer
-import handtracker
+#import handtracker
 import io
 import cv2
 import numpy as np
@@ -79,12 +79,12 @@ def processFrame(frameData, ws):
 
     print(scrapedData)
 
-    if (not RECORD):
+    """if (not RECORD):
         print("predicting")
         label, perc = handtracker.predictData([scrapedData])
 
         print("predicted")
-        print(label)
+        print(label)"""
     
 srv = ThreadedWebsocketServer(IP, PORT, app, ssl_context="adhoc")
 srv.serve_forever()
