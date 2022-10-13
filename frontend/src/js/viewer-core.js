@@ -68,7 +68,10 @@ function getLimits(keyPoints) {
 
 function normalize(value, min, max) {
 
-    return (value - min) / (max - min);
+    var result = (value - min) / (max - min);
+
+    if (result != NaN) return result;
+    else return 0.0;
 
 }
 
@@ -107,16 +110,22 @@ async function loop(detector) {
         const limits = getLimits(keypoints3D);
         const normalizedPoints = normalizeKeypoints(keypoints3D, limits);
 
-        console.log("keypoints");
-        console.log(keypoints3D);
-        console.log("limits");
-        console.log(limits);
-        console.log("normalized");
-        console.log(normalizedPoints);
-        console.log("first");
-        console.log(normalizedPoints[0]);
+        var output = "";
 
-        console.log(keypoints3D[0]);
+        normalizedPoints.forEach((landmark) => {
+
+            landmark.forEach((point) => {
+
+                output += point.toString() + ",";
+
+            });
+
+        });
+
+        output = output.slice(0, -1); // remove last character
+
+        console.log(output);
+        socket.send(output);
 
     }
 
@@ -146,17 +155,11 @@ async function loop(detector) {
 
         // the issue: coordinates on the database range from 0 to 1, meanwhile the coordinates
         // from the cam are based on the camera picture size
+        // resolved
 
     }*/
 
     addOutputText(Math.floor(Math.random() * 9).toString());
-
-}
-
-
-function onResults() {
-
-    console.log(results.multiHandLandmarks);
 
 }
 
@@ -195,7 +198,7 @@ async function init() {
 
     //const model = await handpose.load();
 
-    setInterval(loop, 1000 / 30, detector);
+    setInterval(loop, 1000 / 15, detector);
 
     console.log("Started!");
     hideVideoLoader();
