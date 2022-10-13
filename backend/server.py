@@ -78,13 +78,13 @@ def processFrame(frameData, ws):
             os._exit(1)
 
     print(scrapedData)
-    print("predicting")
 
     if (not RECORD):
+        print("predicting")
         label, perc = handtracker.predictData([scrapedData])
 
-    print("predicted")
-    print(label)
+        print("predicted")
+        print(label)
     
 srv = ThreadedWebsocketServer(IP, PORT, app, ssl_context="adhoc")
 srv.serve_forever()
