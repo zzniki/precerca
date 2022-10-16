@@ -206,7 +206,7 @@ async function init() {
 
 }
 
-socket.onopen = function(event) {
+socket.onopen = (event) => {
 
     console.log("Connected!");
 
@@ -215,9 +215,16 @@ socket.onopen = function(event) {
 
 }
 
-socket.onerror = function(event) {
+socket.onmessage = (event) => {
 
-    //console.log(event);
+    console.log(event.data);
+    addOutputText(event.data);
+
+}
+
+socket.onerror = (event) => {
+
+    console.log(event);
 
 }
 

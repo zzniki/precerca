@@ -11,6 +11,7 @@ import base64
 import threading
 import sys
 import os
+import json
 
 IP = "0.0.0.0"
 PORT = 8443
@@ -27,6 +28,11 @@ if (len(sys.argv) >= 2):
 
         RECORD = True
         TARGETFRAMES = int(sys.argv[2])
+
+print("[INFO] Loading labels...")
+f = open("labels.json", "r")
+labels = json.load(f)
+f.close()
 
 app = Flask(__name__)
 sockets = Sockets(app)
@@ -82,11 +88,14 @@ def processFrame(frameData, ws):
     #print(scrapedData)
 
     if (not RECORD):
-        #print("predicting")
         label, perc = handtracker.predictData([scrapedData])
-
-        #print("predicted")
+        
         print(label)
+
+        if (label in labels):
+            ws.send(labels[label])
+
+
     
 srv = ThreadedWebsocketServer(IP, PORT, app, ssl_context="adhoc")
 srv.serve_forever()
