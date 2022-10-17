@@ -159,7 +159,7 @@ async function loop(detector) {
 
     }*/
 
-    addOutputText(Math.floor(Math.random() * 9).toString());
+    //addOutputText(Math.floor(Math.random() * 9).toString());
 
 }
 
