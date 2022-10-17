@@ -33,6 +33,9 @@ var letterDisplay = document.getElementById("letter-display");
 var outputElem = document.getElementById("output-text");
 var displayWidth = letterDisplay.scrollWidth;
 
+const showingVideo = false;
+const lastLetter = "";
+
 function getLimits(keyPoints) {
 
     var minX = 1000;
@@ -99,9 +102,6 @@ function normalizeKeypoints(keypoints, limits) {
 
 async function loop(detector) {
 
-    console.log("Loop2");
-
-
     const predictions = await detector.estimateHands(preview, {flipHorizontal: false});
 
     if (predictions.length > 0) {
@@ -124,7 +124,14 @@ async function loop(detector) {
 
         output = output.slice(0, -1); // remove last character
 
-        console.log(output);
+        if (!showingVideo) {
+
+            hideVideoLoader();
+            showPreviewVideo();
+            showingVideo = true;
+
+        }
+
         socket.send(output);
 
     }
@@ -201,8 +208,6 @@ async function init() {
     setInterval(loop, 1000 / 15, detector);
 
     console.log("Started!");
-    hideVideoLoader();
-    showPreviewVideo();
 
 }
 
@@ -218,7 +223,14 @@ socket.onopen = (event) => {
 socket.onmessage = (event) => {
 
     console.log(event.data);
-    addOutputText(event.data);
+
+    if (event.data != lastLetter) {
+
+        addOutputText(event.data);
+
+    }
+
+    lastLetter = event.data;
 
 }
 
