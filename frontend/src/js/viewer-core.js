@@ -33,8 +33,8 @@ var letterDisplay = document.getElementById("letter-display");
 var outputElem = document.getElementById("output-text");
 var displayWidth = letterDisplay.scrollWidth;
 
-const showingVideo = false;
-const lastLetter = "";
+var showingVideo = false;
+var lastLetter = "";
 
 function getLimits(keyPoints) {
 
@@ -219,7 +219,6 @@ socket.onopen = (event) => {
     loadingScreen.style.visibility = "hidden";
 
 }
-
 
 socket.onmessage = (event) => {
 
