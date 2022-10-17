@@ -124,15 +124,15 @@ async function loop(detector) {
 
         output = output.slice(0, -1); // remove last character
 
-        if (!showingVideo) {
-
-            hideVideoLoader();
-            showPreviewVideo();
-            showingVideo = true;
-
-        }
-
         socket.send(output);
+
+    }
+
+    if (!showingVideo) {
+
+        hideVideoLoader();
+        showPreviewVideo();
+        showingVideo = true;
 
     }
 
