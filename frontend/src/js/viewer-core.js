@@ -220,6 +220,7 @@ socket.onopen = (event) => {
 
 }
 
+
 socket.onmessage = (event) => {
 
     console.log(event.data);
