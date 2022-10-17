@@ -205,7 +205,7 @@ async function init() {
 
     //const model = await handpose.load();
 
-    setInterval(loop, 1000 / 15, detector);
+    setInterval(loop, 1000 / 5, detector);
 
     console.log("Started!");
 
