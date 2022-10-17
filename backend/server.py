@@ -86,6 +86,7 @@ def processFrame(frameData, ws):
             os._exit(1)
 
     #print(scrapedData)
+    print("recv")
 
     if (not RECORD):
         label, perc = handtracker.predictData([scrapedData])
