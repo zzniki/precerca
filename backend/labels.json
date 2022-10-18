@@ -6,5 +6,13 @@
     "r_let_o": "o",
     "l_let_o": "o",
     "r_let_l": "l",
-    "l_let_l": "l"
+    "l_let_l": "l",
+    "r_let_m": "m",
+    "l_let_m": "m",
+    "r_let_c": "c",
+    "l_let_c": "c",
+    "r_let_b": "b",
+    "l_let_b": "b",
+    "r_let_s": "s",
+    "l_let_s": "s"
 }
