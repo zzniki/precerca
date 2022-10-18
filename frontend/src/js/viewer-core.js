@@ -36,6 +36,7 @@ var displayWidth = letterDisplay.scrollWidth;
 var showingVideo = false;
 var lastLetter = "";
 var timesReceived = 0;
+var shownLetter = false;
 
 function getLimits(keyPoints) {
 
@@ -229,11 +230,19 @@ socket.onmessage = (event) => {
 
         timesReceived++;
 
+        if (timesReceived >= 3 && !shownLetter) {
+
+            addOutputText(event.data);
+            shownLetter = true;
+
+        }
+
     }
 
-    if (event.data != lastLetter && timesReceived == 3) {
+    if (event.data != lastLetter) {
 
-        addOutputText(event.data);
+        timesReceived = 0;
+        shownLetter = false;
 
     }
 
