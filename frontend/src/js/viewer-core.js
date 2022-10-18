@@ -237,7 +237,7 @@ socket.onmessage = (event) => {
 
         timesReceived++;
 
-        if (timesReceived >= 3 && !shownLetter) {
+        if (timesReceived >= 2 && !shownLetter) {
 
             addOutputText(event.data);
             shownLetter = true;
