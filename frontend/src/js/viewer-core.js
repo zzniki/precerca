@@ -35,6 +35,7 @@ var displayWidth = letterDisplay.scrollWidth;
 
 var showingVideo = false;
 var lastLetter = "";
+var timesReceived = 0;
 
 function getLimits(keyPoints) {
 
@@ -205,7 +206,7 @@ async function init() {
 
     //const model = await handpose.load();
 
-    setInterval(loop, 1000 / 5, detector);
+    setInterval(loop, 1000 / 10, detector);
 
     console.log("Started!");
 
@@ -224,7 +225,13 @@ socket.onmessage = (event) => {
 
     console.log(event.data);
 
-    if (event.data != lastLetter) {
+    if (event.data == lastLetter) {
+
+        timesReceived++;
+
+    }
+
+    if (event.data != lastLetter && timesReceived == 3) {
 
         addOutputText(event.data);
 
