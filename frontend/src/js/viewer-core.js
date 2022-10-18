@@ -226,6 +226,13 @@ socket.onmessage = (event) => {
 
     console.log(event.data);
 
+    if (event.data != lastLetter) {
+
+        timesReceived = 0;
+        shownLetter = false;
+
+    }
+
     if (event.data == lastLetter) {
 
         timesReceived++;
@@ -236,13 +243,6 @@ socket.onmessage = (event) => {
             shownLetter = true;
 
         }
-
-    }
-
-    if (event.data != lastLetter) {
-
-        timesReceived = 0;
-        shownLetter = false;
 
     }
 
@@ -278,12 +278,9 @@ function showPreviewVideo() {
 function addOutputText(text) {
 
     outputElem.text += text;
-    console.log(outputElem.scrollWidth);
-    console.log(letterDisplay.scrollWidth);
 
     if (outputElem.scrollWidth > displayWidth) {
 
-        console.log("overflow");
         outputElem.style.transform = "translateX(-" + (outputElem.scrollWidth - displayWidth).toString() + "px)";
 
     }
