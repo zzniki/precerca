@@ -39,7 +39,7 @@ def loadDataset(dir):
                     if (dataPoint == ""):
                         continue
 
-                    dataset[i]["data"].append([float(z) for z in dataPoint.split(" ")]) # convert to float
+                    dataset[i]["data"].append([float(z) for z in dataPoint.split(" ")]) # Convertir a float
 
                 dataset[i]["label"] = filename.replace(".hand", "")
 
