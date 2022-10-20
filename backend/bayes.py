@@ -16,12 +16,12 @@ def debugPrint(text, enabledDebug):
 def mean(numbers): # Mean (mitjana aritmètica)
     return sum(numbers) / float(len(numbers))
 
-def stdev(numbers): # Standard deviation (desviació estàndard)
+def stdev(numbers): # Standard deviation (desviació estàndar)
     avg = mean(numbers)
     variance = sum([pow(x - avg, 2) for x in numbers]) / float(len(numbers) - 1)
     return math.sqrt(variance)
 
-def loadDataset(dir):
+def loadDataset(dir): # Carga la base de dades
 
     dataset = {}
 
@@ -45,7 +45,7 @@ def loadDataset(dir):
 
     return dataset
 
-def deScrapeSet(dataset):
+def deScrapeSet(dataset): # Re-estructura les variables, optimització
     newDataSet = []
 
     for dataClass in dataset:
@@ -56,7 +56,7 @@ def deScrapeSet(dataset):
 
     return newDataSet
 
-def separateByClass(dataset):
+def separateByClass(dataset): # Separa dades per classe
 
     classified = {}
 
