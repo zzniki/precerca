@@ -68,7 +68,7 @@ def separateByClass(dataset): # Separa dades per classe
 
     return classified
 
-def summarizeDataset(dataset): # returns [mean*(V1, V2, V3...), stdev*(V1, V2, V3...)]
+def summarizeDataset(dataset): # Retorna [(mean*(V1, V2, V3...), stdev*(V1, V2, V3...), len(V1, V2, V3...))]
     
     summaries = [(mean(attribute), stdev(attribute), len(attribute)) for attribute in zip(*dataset)]
     del summaries[-1]
@@ -88,14 +88,14 @@ def summarizeByClass(dataset):
 def calculateProbability(x, mean, stdev): # Gaussian Probability Distribution Function / Gaussian PDF
 
     # f(x) = (1 / sqrt(2 * PI) * sigma) * exp(-((x-mean)^2 / (2 * sigma^2)))
-    # sigma = derivation for x
-    # mean is mean for x
-    # x is x value
+    # sigma = Desviació estàndar d'X
+    # mean = Mitjana aritmètica d'X
 
     exponent = math.exp(-((x-mean)**2 / (2 * stdev**2 )))
     return (1 / (math.sqrt(2 * math.pi) * stdev)) * exponent
 
-def calcClassProbabilities(summaries, row): # Calculate the probabilities of predicting each class for a given row
+# Calculate the probabilities of predicting each class for a given row
+def calcClassProbabilities(summaries, row):
     total_rows = sum([summaries[label][0][2] for label in summaries])
     probabilities = {}
     for class_value, class_summaries in summaries.items():
