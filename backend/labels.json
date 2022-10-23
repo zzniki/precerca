@@ -14,5 +14,13 @@
     "r_let_b": "b",
     "l_let_b": "b",
     "r_let_s": "s",
-    "l_let_s": "s"
+    "l_let_s": "s",
+    "r_let_d": "d",
+    "l_let_d": "d",
+    "r_let_i": "i",
+    "l_let_i": "i",
+    "r_let_n": "n",
+    "l_let_n": "n",
+    "r_let_space": " ",
+    "l_let_space": " "
 }
