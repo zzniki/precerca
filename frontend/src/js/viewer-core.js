@@ -178,7 +178,7 @@ async function loop(detector) {
 async function init() {
 
     try {
-        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "user"});
+        cameraStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: { exact: "user"}}, audio: false, facingMode: "user"});
         preview.srcObject = cameraStream;
     } catch (e) {
         console.log(e);
