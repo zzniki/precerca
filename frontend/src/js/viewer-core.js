@@ -292,7 +292,7 @@ function addOutputText(text) {
 
 preview.onclick = async () => {
 
-    console.log("xddd");
+    console.log("xddd2");
 
     clearInterval(loopInterval);
 
