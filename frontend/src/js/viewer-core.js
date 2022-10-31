@@ -294,10 +294,12 @@ preview.onclick = async () => {
 
     if (!camSwitch) {
         console.log("env");
-        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "enviroment"});
+        cameraStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: { exact: "environment"}}, audio: false, facingMode: "enviroment"});
+        preview.srcObject = cameraStream;
     } else if (camSwitch) {
         console.log("user");
-        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "user"});
+        cameraStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: { exact: "user"}}, audio: false, facingMode: "user"});
+        preview.srcObject = cameraStream;
     }
 
     camSwitch = !camSwitch;
