@@ -17,6 +17,7 @@ var cameraStream = null;
 var mediaRecorder = null;
 var camSwitch = false;
 var loopInterval = null;
+var detector = null;
 
 var address = "wss://pr.niki.cat:8443/detect";
 
@@ -197,7 +198,7 @@ async function init() {
 
     }
 
-    const detector = await handPoseDetection.createDetector(model, detectorConfig);
+    detector = await handPoseDetection.createDetector(model, detectorConfig);
 
     console.log("Started...")
 
@@ -293,6 +294,8 @@ preview.onclick = async () => {
 
     console.log("xddd");
 
+    clearInterval(loopInterval);
+
     if (!camSwitch) {
         console.log("env");
         cameraStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: { exact: "environment"}}, audio: false, facingMode: "enviroment"});
@@ -305,7 +308,6 @@ preview.onclick = async () => {
 
     preview.srcObject = cameraStream;
 
-    clearInterval(loopInterval);
     loopInterval = setInterval(loop, 1000 / 10, detector);
 
     camSwitch = !camSwitch;
