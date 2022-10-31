@@ -292,19 +292,13 @@ function addOutputText(text) {
 
 preview.onclick = async () => {
 
-    console.log("xddd");
-
     clearInterval(loopInterval);
 
     if (!camSwitch) {
-        console.log("env");
         cameraStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: { exact: "environment"}}, audio: false, facingMode: "enviroment"});
     } else if (camSwitch) {
-        console.log("user");
         cameraStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: { exact: "user"}}, audio: false, facingMode: "user"});
     }
-
-    console.log("reset");
 
     preview.srcObject = cameraStream;
 
