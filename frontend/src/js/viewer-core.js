@@ -295,6 +295,7 @@ preview.onclick = async () => {
     console.log("xddd2");
 
     clearInterval(loopInterval);
+    cameraStream.getTracks().forEach((track) => {track.stop()});
 
     if (!camSwitch) {
         console.log("env");
