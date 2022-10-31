@@ -288,14 +288,17 @@ function addOutputText(text) {
 
 }
 
-preview.onclick = () => {
+preview.onclick = async () => {
 
     console.log("xddd");
 
-    if (!camSwitch)
-        cameraStream = navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "enviroment"});
-    else if (camSwitch)
-        cameraStream = navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "user"});
+    if (!camSwitch) {
+        console.log("env");
+        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "enviroment"});
+    } else if (camSwitch) {
+        console.log("user");
+        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "user"});
+    }
 
     camSwitch = !camSwitch;
 
