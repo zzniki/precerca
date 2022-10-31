@@ -282,11 +282,7 @@ function addOutputText(text) {
 
     outputElem.text += text;
 
-    console.log("---");
-    console.log(outputElem.scrollWidth);
-    console.log(displayWidth);
-
-    if (outputElem.scrollWidth > displayWidth) {
+    if (outputElem.scrollWidth >= displayWidth) {
 
         outputElem.style.transform = "translateX(-" + (outputElem.scrollWidth - displayWidth).toString() + "px)";
 
