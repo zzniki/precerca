@@ -290,6 +290,8 @@ function addOutputText(text) {
 
 preview.onclick = () => {
 
+    console.log("xddd");
+
     if (!camSwitch)
         cameraStream = navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "enviroment"});
     else if (camSwitch)
@@ -298,6 +300,6 @@ preview.onclick = () => {
     camSwitch = !camSwitch;
 
 
-}
+};
 
 init();
