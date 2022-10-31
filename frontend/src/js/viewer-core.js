@@ -288,7 +288,7 @@ function addOutputText(text) {
 
 }
 
-function changeCamView() {
+preview.onclick = () => {
 
     if (!camSwitch)
         cameraStream = navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "enviroment"});
