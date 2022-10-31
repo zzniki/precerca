@@ -288,12 +288,12 @@ function addOutputText(text) {
 
 }
 
-async function changeCamView() {
+function changeCamView() {
 
     if (!camSwitch)
-        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "enviroment"});
+        cameraStream = navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "enviroment"});
     else if (camSwitch)
-        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "user"});
+        cameraStream = navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "user"});
 
     camSwitch = !camSwitch;
 
