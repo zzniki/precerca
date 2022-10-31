@@ -15,6 +15,7 @@ var preview = document.getElementById("preview");
 
 var cameraStream = null;
 var mediaRecorder = null;
+var camSwitch = false;
 
 var address = "wss://pr.niki.cat:8443/detect";
 
@@ -175,7 +176,7 @@ async function loop(detector) {
 async function init() {
 
     try {
-        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
+        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "user"});
         preview.srcObject = cameraStream;
     } catch (e) {
         console.log(e);
@@ -284,6 +285,18 @@ function addOutputText(text) {
         outputElem.style.transform = "translateX(-" + (outputElem.scrollWidth - displayWidth).toString() + "px)";
 
     }
+
+}
+
+async function changeCamView() {
+
+    if (!camSwitch)
+        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "enviroment"});
+    else if (camSwitch)
+        cameraStream = await navigator.mediaDevices.getUserMedia({video: true, audio: false, facingMode: "user"});
+
+    camSwitch = !camSwitch;
+
 
 }
 
