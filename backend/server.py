@@ -1,13 +1,7 @@
-from concurrent.futures import process
 from sys import flags
-from threading import Thread
 from flask import Flask
 from flask_threaded_sockets import Sockets, ThreadedWebsocketServer
 import handtracker
-import io
-import cv2
-import numpy as np
-import base64
 import threading
 import sys
 import os
@@ -85,13 +79,9 @@ def processFrame(frameData, ws):
 
             os._exit(1)
 
-    #print(scrapedData)
-    print("recv")
 
     if (not RECORD):
         label, perc = handtracker.predictData([scrapedData])
-        
-        print(label)
 
         if (label in labels):
             ws.send(labels[label])

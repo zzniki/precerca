@@ -1,10 +1,3 @@
-/*const tf = require("@tensorflow/tfjs-core");
-require("@tensorflow/tfjs-converter");
-
-require("@tensorflow/tfjs-backend-wasm");
-
-const handpose = require("@tensorflow-models/handpose");*/
-
 import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
 import '@tensorflow/tfjs-core';
 // Register WebGL backend.
@@ -141,38 +134,6 @@ async function loop(detector) {
 
     }
 
-    /*const predictions = await model.estimateHands(preview);
-
-    if (predictions.length > 0) {
-
-        //console.log(predictions[0].landmarks);
-
-        var output = "";
-
-        predictions[0].landmarks.forEach((landmark) => {
-
-            landmark.forEach((point) => {
-
-                output += point.toString() + ",";
-
-            });
-
-        });
-
-        output = output.slice(0, -1);
-
-        console.log(predictions[0].boundingBox);
-        console.log(output);
-        socket.send(output);
-
-        // the issue: coordinates on the database range from 0 to 1, meanwhile the coordinates
-        // from the cam are based on the camera picture size
-        // resolved
-
-    }*/
-
-    //addOutputText(Math.floor(Math.random() * 9).toString());
-
 }
 
 async function init() {
@@ -184,7 +145,6 @@ async function init() {
         console.log(e);
         hideVideoLoader();
         showPreviewError(e);
-        //showPreviewError("Couldn't access camera");
         return;
     }
 
@@ -199,16 +159,6 @@ async function init() {
     }
 
     detector = await handPoseDetection.createDetector(model, detectorConfig);
-
-    console.log("Started...")
-
-    //hands.onResults(onResults);
-
-    //await tf.setBackend("wasm");
-
-    console.log("Loaded backend...");
-
-    //const model = await handpose.load();
 
     loopInterval = setInterval(loop, 1000 / 10, detector);
 
@@ -292,20 +242,14 @@ function addOutputText(text) {
 
 preview.onclick = async () => {
 
-    console.log("xddd2");
-
     clearInterval(loopInterval);
     cameraStream.getTracks().forEach((track) => {track.stop()});
 
     if (!camSwitch) {
-        console.log("env");
         cameraStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: { exact: "environment"}}, audio: false, facingMode: "enviroment"});
     } else if (camSwitch) {
-        console.log("user");
         cameraStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: { exact: "user"}}, audio: false, facingMode: "user"});
     }
-
-    console.log("reset");
 
     preview.srcObject = cameraStream;
 

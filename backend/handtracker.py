@@ -29,7 +29,6 @@ finalText = ""
 
 def processHand(image):
     image.flags.writeable = False
-    #image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
     start = time.time()
 
@@ -50,11 +49,6 @@ def scrapeData(results):
             for dataPoint in landmarks.landmark:
                 pointData = [dataPoint.x, dataPoint.y, dataPoint.y]
                 handData[i].append(pointData)
-    
-    """for i, hand in enumerate(handData):
-        if (len(hand) < 21):
-            for x in range(21 - len(hand)):
-                handData[i].append([0, 0, 0])"""
 
     handData[1] = [] # TEMPORARY FOR DATA GATHERING IN ONE HAND
 
@@ -66,7 +60,6 @@ def showResults(image, results, processTime, label, windowTitle="Hand Tracker"):
     global recordedData, recordedFrames, recordingStarted, recordTime
 
     image.flags.writeable = True
-    #image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     imgHeight, imgWidth, _ = image.shape
     annotatedImage = image.copy()

@@ -18,12 +18,10 @@ function onRequest(request, response) {
                 if (error2) { 
                     
                     response.writeHead(404); 
-                    console.log("a");
     
                 } else {
     
                     response.writeHead(200);
-                    console.log("b");
                     response.write(data2);
     
                 }
@@ -33,7 +31,6 @@ function onRequest(request, response) {
         } else {
 
             response.writeHead(200);
-            console.log("c");
             response.write(data);
 
         }

@@ -1,8 +1,5 @@
 # Gaussian Naive Bayes Algorithm
 
-from distutils.command.sdist import sdist
-from distutils.dep_util import newer_group
-from multiprocessing.sharedctypes import Value
 import os
 import math
 import sys
