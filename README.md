@@ -1,11 +1,11 @@
 # Sign Language Translation App
 
-A prototype sing language translation application made for my [baccalaureate's research project](https://google.com/).
+A prototype sing language translation application made for my [baccalaureate's research project](https://github.com/zzniki/precerca/blob/cac3c2175c857cc4339cd0207bea8b47be2fed61/memoria.pdf).
 
 This app translates basic Spanish Sign Language fingerspelling signs to text using Mediapipe HandPose and an implementation of a Naive Bayes Classifier.
 
 ## Showcase
-A 50-page document written in catalan explaining all the inner-workings and showcasing the final product can be found [here](https://google.com/).
+A 50-page document written in catalan explaining all the inner-workings and showcasing the final product can be found [here](https://github.com/zzniki/precerca/blob/cac3c2175c857cc4339cd0207bea8b47be2fed61/memoria.pdf).
 
 (video)
 
