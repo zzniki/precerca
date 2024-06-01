@@ -1,6 +1,6 @@
 import * as handPoseDetection from '@tensorflow-models/hand-pose-detection';
 import '@tensorflow/tfjs-core';
-// Register WebGL backend.
+// Register Wasm backend.
 import '@tensorflow/tfjs-backend-wasm';
 import '@mediapipe/hands';
 
